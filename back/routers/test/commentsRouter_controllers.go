@@ -1,4 +1,4 @@
-package routers
+package test
 
 import (
 	"github.com/astaxie/beego"

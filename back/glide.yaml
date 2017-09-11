@@ -1,33 +1,10 @@
 package: gochat/backend
-#homepage: https://masterminds.github.io/glide
-#license: MIT
-#owners:
-#- name: Matt Butcher
-#  email: technosophos@gmail.com
-#  homepage: http://technosophos.com
-#- name: Matt Farina
-#  email: matt@mattfarina.com
-#  homepage: https://www.mattfarina.com
-#ignore:
-#- appengine
-#excludeDirs:
-#- node_modules
 import:
-#- package: gopkg.in/yaml.v2
-#- package: github.com/Masterminds/vcs
-#  version: ^1.2.0
-#  repo:    git@github.com:Masterminds/vcs
-#  vcs:     git
-#- package: github.com/codegangsta/cli
-#  version: f89effe81c1ece9c5b0fda359ebd9cf65f169a51
-#- package: github.com/Masterminds/semver
-#  version: ^1.0.0
 - package: gopkg.in/mgo.v2
-- package: gopkg.in/mgo.v2/bson
+  subpackages:
+  - bson
 - package: github.com/astaxie/beego
 - package: github.com/beego/bee
-#testImport:
-#- package: github.com/arschles/assert
-
-#package: github.com/Masterminds/glide
-#import:
+- package: github.com/gorilla/websocket
+  version: ^1.2.0
+- package: github.com/beego/i18n

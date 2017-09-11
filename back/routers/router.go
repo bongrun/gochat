@@ -1,30 +1,23 @@
-// @APIVersion 1.0.0
-// @Title beego Test API
-// @Description beego has a very cool tools to autogenerate documents for your API
-// @Contact astaxie@gmail.com
-// @TermsOfServiceUrl http://beego.me/
-// @License Apache 2.0
-// @LicenseUrl http://www.apache.org/licenses/LICENSE-2.0.html
 package routers
 
 import (
 	"gochat/back/controllers"
-
 	"github.com/astaxie/beego"
 )
 
 func init() {
-	ns := beego.NewNamespace("/v1",
-		beego.NSNamespace("/object",
-			beego.NSInclude(
-				&controllers.ObjectController{},
-			),
-		),
-		beego.NSNamespace("/user",
-			beego.NSInclude(
-				&controllers.UserController{},
-			),
-		),
-	)
-	beego.AddNamespace(ns)
+	// Register routers.
+	beego.Router("/", &controllers.AppController{})
+	// Indicate AppController.Join method to handle POST requests.
+	beego.Router("/join", &controllers.AppController{}, "post:Join")
+
+	// Long polling.
+	beego.Router("/lp", &controllers.LongPollingController{}, "get:Join")
+	beego.Router("/lp/post", &controllers.LongPollingController{})
+	beego.Router("/lp/fetch", &controllers.LongPollingController{}, "get:Fetch")
+
+	// WebSocket.
+	beego.Router("/ws", &controllers.WebSocketController{})
+	beego.Router("/ws/join", &controllers.WebSocketController{}, "get:Join")
+
 }
