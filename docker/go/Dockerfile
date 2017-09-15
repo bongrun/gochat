@@ -46,13 +46,13 @@ FROM golang:1.8
 
 RUN curl https://glide.sh/get | sh
 
-WORKDIR /go/src/app
-RUN glide -y init
+#WORKDIR /go/src/app
+#RUN glide -y init
 
 RUN go get github.com/astaxie/beego
 RUN go get github.com/beego/bee
-RUN go get gopkg.in/mgo.v2
-
-RUN go get gopkg.in/mgo.v2/bson
-RUN go get github.com/astaxie/beego
-RUN go install github.com/astaxie/beego
+#RUN go get gopkg.in/mgo.v2
+#
+#RUN go get gopkg.in/mgo.v2/bson
+#RUN go get github.com/astaxie/beego
+#RUN go install github.com/astaxie/beego

@@ -5,9 +5,9 @@
     "install": false
   },
   "go_install": true,
-//  "watch_ext": [
-//    ".ini"
-//  ],
+  "watch_ext": [
+    ".ini"
+  ],
   "dir_structure": {
     "controllers": "",
     "models": "",

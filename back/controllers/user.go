@@ -1,10 +1,11 @@
-package test
+package controllers
 
 import (
 	"gochat/back/models"
+	"gochat/back/conf"
 	"encoding/json"
-
 	"github.com/astaxie/beego"
+	"log"
 )
 
 // Operations about Users
@@ -21,8 +22,21 @@ type UserController struct {
 func (u *UserController) Post() {
 	var user models.User
 	json.Unmarshal(u.Ctx.Input.RequestBody, &user)
-	uid := models.AddUser(user)
-	u.Data["json"] = map[string]string{"uid": uid}
+	if len(user.Username) == 0 || len(user.Password) == 0 || len(user.Profile.Email) == 0 {
+		u.Data["json"] = map[string]string{"success": "error", "description": "Не заполнены данные"}
+		u.ServeJSON()
+		return
+	}
+
+	c := conf.DI.DB.C("user")
+	err := c.Insert(&user)
+	if err != nil {
+		log.Fatal(err)
+		u.Data["json"] = map[string]string{"success": "error"}
+		u.ServeJSON()
+		return
+	}
+	u.Data["json"] = map[string]string{"success": "ok"}
 	u.ServeJSON()
 }
 
@@ -116,4 +130,3 @@ func (u *UserController) Logout() {
 	u.Data["json"] = "logout success"
 	u.ServeJSON()
 }
-

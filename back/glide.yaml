@@ -8,3 +8,5 @@ import:
 - package: github.com/gorilla/websocket
   version: ^1.2.0
 - package: github.com/beego/i18n
+- package: github.com/dgrijalva/jwt-go
+  version: ^3.0.0

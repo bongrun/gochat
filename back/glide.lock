@@ -1,5 +1,5 @@
-hash: c50a117dff3dd19575222b83df55d82d44104cf50f3c24ed3cf0be64dbddd7e2
-updated: 2017-09-12T00:56:20.9280074+03:00
+hash: 96f3dd291da3b9b6e12613cfc17850c7ff8adec9e0e03ccf3adcd469d4beb9f7
+updated: 2017-09-14T22:05:46.10830164Z
 imports:
 - name: github.com/astaxie/beego
   version: 3162da131da68f38e85765781c9d1cc419963e67
@@ -13,15 +13,11 @@ imports:
   - toolbox
   - utils
 - name: github.com/beego/bee
-  version: aae0cc4587becc687af84752455448a205785429
+  version: e90da8f77bba1050b32ce1c7b9b2461d44252546
 - name: github.com/beego/i18n
   version: e9308947f407a24aaa1e7dbe35a01931e99cb255
-- name: github.com/beego/samples
-  version: 52590b80badbb7d380b1b6d8df884a41b6f51275
-  subpackages:
-  - WebIM/controllers
-  - WebIM/models
-  - WebIM/routers
+- name: github.com/dgrijalva/jwt-go
+  version: d2709f9f1f31ebcda9651b03077758c1f3a0018c
 - name: github.com/gorilla/websocket
   version: ea4d1f681babbce9545c9c5f3d5194a789c89f5b
 - name: github.com/Unknwon/goconfig
@@ -30,6 +26,9 @@ imports:
   version: 3f83fa5005286a7fe593b055f0d7771a7dce4655
   subpackages:
   - bson
+  - internal/json
+  - internal/sasl
+  - internal/scram
 testImports:
 - name: github.com/gopherjs/gopherjs
   version: b40cd48c38f9a18eb3db20d163bad78de12cf0b7

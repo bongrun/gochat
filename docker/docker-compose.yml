@@ -54,16 +54,15 @@ services:
 #        image: golang:1.8
         container_name: gochat_go
         volumes:
-            - ../backend/src/chat:/go/src/app
-        working_dir: /go/src/app
+            - ../back:/go/src/gochat/back
+        working_dir: /go/src/gochat/back
         ports:
-            - 9005:9012
+            - 9005:8080
 #        command: tail -f /etc/hosts
 #        command: go run main.go
 #        command: glide update
 #        command: glide install
-        command: bee run
-
+        command: bash -c "glide update && bee run"
     gochat_mongodata:
         image: mongo:3.0.4
         container_name: gochat_mongodata
@@ -75,6 +74,8 @@ services:
         container_name: gochat_mongo
         volumes_from:
             - gochat_mongodata
+        ports:
+          - 27017:27017
         command: --smallfiles --rest
     gochat_rabbitmq:
         image: 'rabbitmq:3-management'
